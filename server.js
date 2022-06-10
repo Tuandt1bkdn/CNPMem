@@ -11,10 +11,8 @@ const corsOptions ={
 // dotenv.config();
 // export { dotenv };
 const app = express();
-//const dotenv = require('dotenv');
 //const morgan = require('morgan');
 
-//dotenv.config();
 app.use(cors(corsOptions))
 
 app.use(body_parser.json())
@@ -25,7 +23,19 @@ app.use(body_parser.urlencoded({
 
 module.exports = app
 
+// function  authenToken(res, req, next) {
+//     const authorizationHeader = req.header['authorization'];
+//     console.log(res);
+//     // const token = authorizationHeader.split(' ')[1];
+//     // if (!token) res.sendStatus(401);
+
+//     // jwt.verify(token, "jwtabc", (err, data) => {
+//     //     console.log(err, data);
+//     // })
+// }
+
 const port = process.env.PORT || 3001 ;
+
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
 
@@ -37,4 +47,5 @@ console.log("ket noi thanh cong");
 }) ;
 
 const route = require("./API/route");
+//const { JsonWebTokenError } = require("jsonwebtoken");
 route(app);
